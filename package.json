@@ -1,5 +1,5 @@
 {
-  "name": "@suchipi/karma-nightmare",
+  "name": "@suchipi-forks/karma-nightmare",
   "version": "0.4.15",
   "description": "A Karma plugin. Launcher for Nightmare",
   "main": "index.js",
