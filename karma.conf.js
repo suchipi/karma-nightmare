@@ -8,7 +8,7 @@ module.exports = function(config) {
 
     // frameworks to use
     // available frameworks: https://npmjs.org/browse/keyword/karma-adapter
-    frameworks: ['mocha', 'browserify'],
+    frameworks: ['mocha'],
 
     // list of files / patterns to load in the browser
     files: [
@@ -18,12 +18,6 @@ module.exports = function(config) {
     // list of files to exclude
     exclude: [
     ],
-
-    // preprocess matching files before serving them to the browser
-    // available preprocessors: https://npmjs.org/browse/keyword/karma-preprocessor
-    preprocessors: {
-      'test/**/*.js': ['browserify'],
-    },
 
     // test results reporter to use
     // possible values: 'dots', 'progress'
@@ -62,21 +56,18 @@ module.exports = function(config) {
     concurrency: Infinity,
 
     nightmareOptions: {
-      skipScreenshot: false,
       width: 800,
       height: 600,
-      show: false,
-    },
-
-    browserify: {
-      debug: true,
-      extensions: ['.js'],
+      show: true,
+      alwaysOnTop: false,
+      webPreferences: {
+        nodeIntegration: true
+      }
     },
 
     plugins: [
       require('./'),
       'karma-mocha',
-      'karma-browserify'
     ]
   })
 }

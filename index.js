@@ -1,5 +1,4 @@
 var path = require('path');
-var client = require("./client");
 
 var NightmareBrowser = function (baseBrowserDecorator, args, config) {
   const options = config.nightmareOptions || {};
@@ -36,8 +35,4 @@ NightmareBrowser.$inject = ['baseBrowserDecorator', 'args', 'config']
 
 module.exports = {
   'launcher:Nightmare': ['type', NightmareBrowser],
-  screenshot: client.screenshot,
-  saveHtml: client.saveHtml,
-  isNightmare: client.isNightmare,
-  getCurrentWindow: client.getCurrentWindow,
 }

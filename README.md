@@ -68,62 +68,6 @@ fs.readFileSync('./screenshot.png');
 The options attribute allows you to initialize properties on the nightmare browser window.   
 The available options are [documented here](https://github.com/atom/electron/blob/master/docs/api/browser-window.md#new-browserwindowoptions).
 
-*** Attention ***   
-`nodeIntegration`, `waitTimeout`, `preload` options are fixed by `karma-nightmare`. you can not change these options.
-
-### karma-nightmare options
-
-| name                         | Default | Description                                                                                                                     |
-| :--------------------------- | :------ | :------------------------------------------------------------------------------------------------------------------------------ |
-| skipScreenshot               | `false` | If set `true`, `screenshot` API is ignored.                                                                                     |
-| skipCaptureHtml              |    false |     If set `true`, `saveHtml` API is ignored.                                                                                  |
-
-Please, see also [karma.conf.js](https://github.com/bokuweb/karma-nightmare/blob/master/karma.conf.js) of this project, using `mocha` and `browserify`.
-
-## API
-
-### isNightmare(): boolean
-
-Return `true`, when test is running on nightmare.
-
-### getCurrentWindow(): ?Electron.BrowserWindow
-
-Return current `BrowserWindow`, when test is running on nightmare.
-Return `null`, when running on other browser.
-
-### screenshot(path: string): Promise\<void\>
-
-Takes a screenshot of the current test. Useful for view test. The output is always a png.
-If `skipScreenshot` option is set `true`, this API is ignored.
-
-``` js
-const { screenshot } = require('karma-nightmare');
-
-describe('karma-nightmare spec', () => {
-  it('should capture browser screenshot', (done) => {
-    document.querySelector('body').innerText = 'karma-nightmare spec';
-    screenshot('./screenshot.png').then(done);
-  })
-});
-```
-
-### saveHtml(path: string, saveType?: string): Promise\<void\>
-
-Save html of the current test. Useful for view test.
-
-``` js
-const { saveHtml } = require('karma-nightmare');
-
-describe('karma-nightmare spec', () => {
-  it('should save current html snapshot', (done) => {
-    document.querySelector('body').innerText = 'karma-nightmare spec';
-    saveHtml('./snapshot.html').then(done);
-  })
-});
-```
-
-If you want `saveType` details, see http://electron.atom.io/docs/api/web-contents/#contentssavepagefullpath-savetype-callback .
-
 ## Test
 
 ``` sh
